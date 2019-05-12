@@ -8,7 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class HttpClientDemo111 {
-    public static String doGet(String httpurl) {
+    public static String doGet(String httpurl, String token) {
         HttpURLConnection connection = null;
         InputStream is = null;
         BufferedReader br = null;
@@ -18,6 +18,11 @@ public class HttpClientDemo111 {
             URL url = new URL(httpurl);
             // 通过远程url连接对象打开一个连接，强转成httpURLConnection类
             connection = (HttpURLConnection) url.openConnection();
+            if ("".equals(token) || token == null) {
+                System.out.println("请求头token无设置配置。");
+            } else {
+                connection.setRequestProperty("token", token);
+            }
             // 设置连接方式：get
             connection.setRequestMethod("GET");
             // 设置连接主机服务器的超时时间：15000毫秒
