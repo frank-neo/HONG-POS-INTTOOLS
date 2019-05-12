@@ -69,8 +69,16 @@ public class SwingLoginExample {
 
 
         JTextArea loginResultText = new JTextArea();
-        loginResultText.setBounds(100,110,550,150);
-        panel.add(loginResultText);
+        //loginResultText.setBounds(100,110,550,150);
+        //自动换行
+        //loginResultText.setLineWrap(true);
+        //文字不打断
+        //loginResultText.setWrapStyleWord(true);
+        //panel.add(loginResultText);
+        //滚动条
+        JScrollPane loginRoll = new JScrollPane(loginResultText);
+        loginRoll.setBounds(100, 110, 550, 150);
+        panel.add(loginRoll);
 
 
         //分割线
@@ -123,8 +131,13 @@ public class SwingLoginExample {
 
 
         JTextArea testResultText = new JTextArea();
-        testResultText.setBounds(100,400,550,280);
-        panel.add(testResultText);
+        JScrollPane testResultRoll = new JScrollPane(testResultText);
+        testResultRoll.setBounds(100,400,550,280);
+        panel.add(testResultRoll);
+        //testResultText.setLineWrap(true);
+        //testResultText.setWrapStyleWord(true);
+        //testResultText.setBounds(100,400,550,280);
+        //panel.add(testResultText);
 
 
         //创建登录按钮

@@ -1,3 +1,5 @@
+import com.alibaba.fastjson.JSON;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,12 +30,12 @@ public class testButtonAct implements ActionListener {
             System.out.println("请求接口token：======》" + token);
             System.out.println("请求接口地址：======》" + url + "?" + param);
             String result = HttpClientDemo111.doGet(url + "?" + param+"&sign="+SignMaker.SignMakerDemo(param,MD5), token);
-            testResultText.setText(result);
-            testResultText.setLineWrap(true);
-            testResultText.setWrapStyleWord(true);
+            WebBaseResponse response = JSON.parseObject(result,WebBaseResponse.class);
+            testResultText.setText(JsonBeauty.JsonFomart(response));
         } catch (Exception e1) {
             e1.printStackTrace();
             System.out.println("系统内部错误。");
+            testResultText.setText("系统内部错误。");
         }
     }
 }

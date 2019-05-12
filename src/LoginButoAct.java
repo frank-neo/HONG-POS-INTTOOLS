@@ -34,9 +34,7 @@ public class LoginButoAct implements ActionListener {
 
             //尝试获取md5和token
             WebBaseResponse response = JSON.parseObject(result,WebBaseResponse.class);
-            loginResultText.setText(result);
-            loginResultText.setLineWrap(true);
-            loginResultText.setWrapStyleWord(true);
+            loginResultText.setText(JsonBeauty.JsonFomart(response));
 
             tokenText.setText((String) response.getRspMap().get("token"));
             System.out.println("token=========>"+response.getRspMap().get("token"));

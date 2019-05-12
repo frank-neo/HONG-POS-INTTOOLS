@@ -10,7 +10,7 @@ public class JsonBeauty {
     public static String JsonFomart(Object result) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         //格式化/美化/优雅的输出
-        //System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(result));
+        System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(result));
         return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(result);
     }
 
