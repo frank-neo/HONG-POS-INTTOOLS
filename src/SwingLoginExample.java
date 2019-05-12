@@ -1,8 +1,4 @@
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class SwingLoginExample {
 
@@ -10,7 +6,7 @@ public class SwingLoginExample {
         // 创建 JFrame 实例
         JFrame frame = new JFrame("红pos接口测试工具----shaoxiong.li");
         // Setting the width and height of frame
-        frame.setSize(400, 800);
+        frame.setSize(700, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         /* 创建面板，这个类似于 HTML 的 div 标签
@@ -37,13 +33,13 @@ public class SwingLoginExample {
         panel.setLayout(null);
 
         //接口说面性文档
-        JLabel toolInf = new JLabel("目前此接口只能测试红pos的get方式请求接口。");
+        JLabel toolInf = new JLabel("目前此接口只能测试红pos的请求接口。");
         toolInf.setBounds(10,0,300,25);
         panel.add(toolInf);
 
         //登录标题
-        JLabel loginInf = new JLabel("---------------------------------测试接口前必须先登录---------------------------------");
-        loginInf.setBounds(0,20,400,25);
+        JLabel loginInf = new JLabel("-------------------------------------------------------------------------测试接口前必须先登录------------------------------------------------------------------");
+        loginInf.setBounds(0,20,700,25);
         panel.add(loginInf);
 
 
@@ -53,7 +49,7 @@ public class SwingLoginExample {
 
         //登录账户
         JTextField userText = new JTextField(20);
-        userText.setBounds(100,50,250,25);
+        userText.setBounds(100,50,550,25);
         panel.add(userText);
 
         //登录密码
@@ -63,7 +59,7 @@ public class SwingLoginExample {
 
 
         JTextField passwordText = new JTextField(20);
-        passwordText.setBounds(100,80,250,25);
+        passwordText.setBounds(100,80,550,25);
         panel.add(passwordText);
 
         //登录结果
@@ -72,38 +68,41 @@ public class SwingLoginExample {
         panel.add(loginResult);
 
 
-        JTextField loginResultText = new JTextField(20);
-        loginResultText.setBounds(100,110,250,150);
-        panel.add(loginResultText);
+        JTextArea loginResultText = new JTextArea();
+        //loginResultText.setBounds(100,110,550,150);
+        //自动换行
+        //loginResultText.setLineWrap(true);
+        //文字不打断
+        //loginResultText.setWrapStyleWord(true);
+        //panel.add(loginResultText);
+        //滚动条
+        JScrollPane loginRoll = new JScrollPane(loginResultText);
+        loginRoll.setBounds(100, 110, 550, 150);
+        panel.add(loginRoll);
 
-        //创建登录按钮
-        JButton loginButton = new JButton("登录");
-        loginButton.setBounds(10, 230, 80, 25);
-        LoginButoAct loginButoAct = new LoginButoAct(userText,passwordText,loginResultText);
-        loginButton.addActionListener(loginButoAct);
-        panel.add(loginButton);
 
         //分割线
-        JLabel FGX = new JLabel("---------------------------------------------------------------------------------------------------");
-        FGX.setBounds(0,250,400,25);
+        JLabel FGX = new JLabel("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        FGX.setBounds(0,250,700,25);
         panel.add(FGX);
 
         //接口测试区域
+        //token
         JLabel token = new JLabel("token:");
-        token.setBounds(10,280,80,25);
+        token.setBounds(10,280,50,25);
         panel.add(token);
 
         JTextField tokenText = new JTextField(20);
-        tokenText.setBounds(100,280,165,25);
+        tokenText.setBounds(100,280,550,25);
         panel.add(tokenText);
 
         //MD5-KEY
         JLabel md5Label = new JLabel("MD5-KEY:");
-        md5Label.setBounds(10,310,80,25);
+        md5Label.setBounds(10,310,50,25);
         panel.add(md5Label);
 
         JTextField MD5Text = new JTextField(20);
-        MD5Text.setBounds(100,310,165,25);
+        MD5Text.setBounds(100,310,550,25);
         panel.add(MD5Text);
 
         //接口
@@ -112,7 +111,7 @@ public class SwingLoginExample {
         panel.add(INTurl);
 
         JTextField INTurlText = new JTextField(20);
-        INTurlText.setBounds(100,340,165,25);
+        INTurlText.setBounds(100,340,550,25);
         panel.add(INTurlText);
 
         //接口参数
@@ -121,27 +120,43 @@ public class SwingLoginExample {
         panel.add(INTparam);
 
         JTextField INTparamText = new JTextField(20);
-        INTparamText.setBounds(100,370,165,25);
+        INTparamText.setBounds(100,370,550,25);
         panel.add(INTparamText);
 
 
-        //登录结果
+        //测试结果
         JLabel testResult = new JLabel("测试结果：");
         testResult.setBounds(10,400,160,25);
         panel.add(testResult);
 
 
-        JTextField testResultText = new JTextField(20);
-        testResultText.setBounds(100,400,250,240);
-        panel.add(testResultText);
+        JTextArea testResultText = new JTextArea();
+        JScrollPane testResultRoll = new JScrollPane(testResultText);
+        testResultRoll.setBounds(100,400,550,280);
+        panel.add(testResultRoll);
+        //testResultText.setLineWrap(true);
+        //testResultText.setWrapStyleWord(true);
+        //testResultText.setBounds(100,400,550,280);
+        //panel.add(testResultText);
+
+
+        //创建登录按钮
+        JButton loginButton = new JButton("登录");
+        loginButton.setBounds(10, 230, 80, 25);
+        LoginButoAct loginButoAct = new LoginButoAct(userText,passwordText,loginResultText,tokenText,MD5Text);
+        loginButton.addActionListener(loginButoAct);
+        panel.add(loginButton);
 
         // 创建测试按钮
         JButton testButton = new JButton("测试");
-        testButton.setBounds(10, 610, 80, 25);
-        testButtonAct testButtonAct =new testButtonAct();
+        testButton.setBounds(10, 650, 80, 25);
+        testButtonAct testButtonAct =new testButtonAct(tokenText,MD5Text,INTurlText,INTparamText,testResultText);
         testButton.addActionListener(testButtonAct);
-
         panel.add(testButton);
-    }
 
+        //lee
+        JLabel editor = new JLabel("shaoxiong.li");
+        editor.setBounds(300,800,100,25);
+        panel.add(editor);
+    }
 }

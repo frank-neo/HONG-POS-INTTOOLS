@@ -8,5 +8,10 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="fastjson-1.2.47" level="project" />
+    <orderEntry type="library" name="commons-lang3-3.7" level="project" />
+    <orderEntry type="library" name="commons-codec-1.8" level="project" />
+    <orderEntry type="library" name="jackson-databind-2.9.5" level="project" />
+    <orderEntry type="library" name="jackson-core-2.9.5" level="project" />
+    <orderEntry type="library" name="jackson-annotations-2.9.5" level="project" />
   </component>
 </module>
