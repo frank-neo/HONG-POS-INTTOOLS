@@ -20,6 +20,7 @@ public class HttpClientDemo111 {
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestProperty("User-Agent", "PostmanRuntime/7.11.0");
             connection.setRequestProperty("accept", "*/*");
+            connection.addRequestProperty("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
             connection.setRequestProperty("connection", "Keep-Alive");
             connection.setRequestProperty("Cache-Control", "no-cache");
             connection.setRequestProperty("accept-encoding", "gzip, deflate");
@@ -40,6 +41,7 @@ public class HttpClientDemo111 {
             System.out.println("connection状态码：" + connection.getResponseCode());
             // 通过connection连接，获取输入流
             if (connection.getResponseCode() == 200) {
+                //实际发送请求的代码段就在这里
                 is = connection.getInputStream();
                 // 封装输入流is，并指定字符集
                 br = new BufferedReader(new InputStreamReader(is, "UTF-8"));

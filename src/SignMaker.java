@@ -11,7 +11,7 @@ public class SignMaker {
     public static String SignMakerDemo(String url, String md5key) {
 
         String MD5_KEY;
-        Map<String ,String> requestParam = new HashMap<>();
+        Map<String, String> requestParam = new HashMap<>();
         List<String> keys = new ArrayList<>();
 
         try {
@@ -23,9 +23,10 @@ public class SignMaker {
             String urls[] = url.split("&");
 
             for (int i = 0; i < urls.length; i++) {
-                requestParam.put(urls[i].split("=")[0], urls[i].split("=")[1]);
-                //map.put("111",222);
-                //System.out.println("|||||||||||||||||||||||"+urls[i].split("=")[1]);
+                if (urls[i].split("=").length == 2) {
+                    requestParam.put(urls[i].split("=")[0], urls[i].split("=")[1]);
+                    System.out.println("key:" + urls[i].split("=")[0] + "," + "value:" + urls[i].split("=")[1]);
+                }
             }
             keys = new ArrayList<String>(requestParam.keySet());
             System.out.println("keys=>{}" + keys);
@@ -47,7 +48,7 @@ public class SignMaker {
         linkString = StringUtils.substring(linkString, 0, linkString.length() - 1);// 去除最后一个'&'
 
         String sign = DigestUtils.md5Hex(linkString + MD5_KEY);// 混合密钥md5
-        System.out.println("系统后台生成的sign=============>"+sign);
+        System.out.println("系统后台生成的sign=============>" + sign);
         return sign;
     }
 }
