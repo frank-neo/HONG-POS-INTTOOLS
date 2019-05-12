@@ -18,6 +18,11 @@ public class HttpClientDemo111 {
             URL url = new URL(httpurl);
             // 通过远程url连接对象打开一个连接，强转成httpURLConnection类
             connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("User-Agent", "PostmanRuntime/7.11.0");
+            connection.setRequestProperty("accept", "*/*");
+            connection.setRequestProperty("connection", "Keep-Alive");
+            connection.setRequestProperty("Cache-Control", "no-cache");
+            connection.setRequestProperty("accept-encoding", "gzip, deflate");
             if ("".equals(token) || token == null) {
                 System.out.println("请求头token无设置配置。");
             } else {
@@ -31,6 +36,8 @@ public class HttpClientDemo111 {
             connection.setReadTimeout(60000);
             // 发送请求
             connection.connect();
+            //打印请求状态码
+            System.out.println("connection状态码：" + connection.getResponseCode());
             // 通过connection连接，获取输入流
             if (connection.getResponseCode() == 200) {
                 is = connection.getInputStream();
@@ -69,7 +76,7 @@ public class HttpClientDemo111 {
 
             connection.disconnect();// 关闭远程连接
         }
-
+        System.out.println("doGet方法返回的数据：===》" + result);
         return result;
     }
 

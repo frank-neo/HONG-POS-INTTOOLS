@@ -29,9 +29,10 @@ public class testButtonAct implements ActionListener {
             String param = INTparamText.getText();
             System.out.println("请求接口token：======》" + token);
             System.out.println("请求接口地址：======》" + url + "?" + param);
-            String result = HttpClientDemo111.doGet(url + "?" + param+"&sign="+SignMaker.SignMakerDemo(param,MD5), token);
-            WebBaseResponse response = JSON.parseObject(result,WebBaseResponse.class);
+            String result = HttpClientDemo111.doGet(url + "?" + param + "&sign=" + SignMaker.SignMakerDemo(param, MD5), token);
+            WebBaseResponse response = JSON.parseObject(result, WebBaseResponse.class);
             testResultText.setText(JsonBeauty.JsonFomart(response));
+            //System.out.println("testResultText文本结构数据：===》" + result);
         } catch (Exception e1) {
             e1.printStackTrace();
             System.out.println("系统内部错误。");
