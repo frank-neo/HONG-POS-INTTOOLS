@@ -20,7 +20,7 @@ public class HttpClientDemo111 {
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestProperty("User-Agent", "PostmanRuntime/7.11.0");
             connection.setRequestProperty("accept", "*/*");
-            connection.addRequestProperty("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
+            connection.addRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
             connection.setRequestProperty("connection", "Keep-Alive");
             connection.setRequestProperty("Cache-Control", "no-cache");
             connection.setRequestProperty("accept-encoding", "gzip, deflate");

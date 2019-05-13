@@ -155,8 +155,11 @@ public class SwingLoginExample {
         panel.add(testButton);
 
         //lee
-        JLabel editor = new JLabel("shaoxiong.li");
-        editor.setBounds(300,800,100,25);
+        JLabel editor = new JLabel("version 1.10");
+        editor.setBounds(610,710,100,25);
+        JLabel editor1 = new JLabel("by shaoxiong.li_c");
+        editor1.setBounds(580,730,100,25);
         panel.add(editor);
+        panel.add(editor1);
     }
 }
