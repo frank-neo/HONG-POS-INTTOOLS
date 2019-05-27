@@ -1,7 +1,4 @@
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.*;
 
 /**
  * sign签名生成器
