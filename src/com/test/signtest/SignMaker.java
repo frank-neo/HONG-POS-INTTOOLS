@@ -1,3 +1,5 @@
+package com.test.signtest;
+
 import org.apache.commons.codec.digest.DigestUtils;
 
 /**

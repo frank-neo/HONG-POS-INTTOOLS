@@ -1,9 +1,10 @@
+package com.test.signtest;
+
 import com.alibaba.fastjson.JSON;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Map;
 
 public class testButtonAct implements ActionListener {
 

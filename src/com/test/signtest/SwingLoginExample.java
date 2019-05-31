@@ -1,3 +1,5 @@
+package com.test.signtest;
+
 import javax.swing.*;
 
 public class SwingLoginExample {

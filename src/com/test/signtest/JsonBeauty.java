@@ -1,3 +1,5 @@
+package com.test.signtest;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;

@@ -1,9 +1,10 @@
+package com.test.signtest;
+
 import com.alibaba.fastjson.JSON;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Map;
 
 public class LoginButoAct implements ActionListener {
 
@@ -30,7 +31,11 @@ public class LoginButoAct implements ActionListener {
             System.out.println(userText.getText() + passwordText.getText());
             String param = "USR_LOGIN=" + userText.getText() + "&" + "USR_LOGIN_PWD=" + passwordText.getText();
             String sign = SignMaker.SignMakerDemo(param, "MD5_KEY");
-            String url = "http://192.168.25.116:8480/appagt/appagt/usr/login" + "?" + param
+            //红pos测试地址
+//            String url = "http://192.168.25.116:8480/appagt/appagt/usr/login" + "?" + param
+//                    + "&sign=" + sign;
+            //大pos测试地址
+            String url = "http://192.168.16.65:8480/api/appagt/appagt/usr/login" + "?" + param
                     + "&sign=" + sign;
             System.out.println("请求地址为：" + url);
             String result = HttpClientDemo111.doGet(url, null);
