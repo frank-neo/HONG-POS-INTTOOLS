@@ -22,13 +22,47 @@ public class ParamUnit {
             if (urls[i].split("=").length == 2) {
                 String key = urls[i].split("=")[0];
                 String value = urls[i].split("=")[1];
+                if (!"".equals(key)) {
+                    if ("nomal".equals(type)) {
+                        requestParam.put(key, value);
+                    } else {
+                        try {
+                            key = URLEncoder.encode(key, "UTF-8");
+                            value = URLEncoder.encode(value, "UTF-8");
+                            requestParam.put(key, value);
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                            System.out.println("请求参数转码失败。");
+                            return null;
+                        }
+                    }
+                }
+            } else if (urls[i].split("=").length == 0) {
+
+                if ("nomal".equals(type)) {
+                    requestParam.put(urls[i], "");
+                } else {
+                    try {
+                        String key = URLEncoder.encode(urls[i], "UTF-8");
+                        String value = "";
+                        requestParam.put(key, value);
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                        System.out.println("请求参数转码失败。");
+                        return null;
+                    }
+                }
+
+            } else if (urls[i].split("=").length == 1) {
+                String key = urls[i].split("=")[0];
+                String value = "";
 
                 if ("nomal".equals(type)) {
                     requestParam.put(key, value);
                 } else {
                     try {
                         key = URLEncoder.encode(key, "UTF-8");
-                        value = URLEncoder.encode(value, "UTF-8");
+                        value = "";
                         requestParam.put(key, value);
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();

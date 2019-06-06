@@ -1,6 +1,8 @@
 package com.test.signtest;
 
 import javax.swing.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class SwingLoginExample {
 
@@ -35,8 +37,29 @@ public class SwingLoginExample {
         panel.setLayout(null);
 
         //接口说面性文档
-        JLabel toolInf = new JLabel("目前此接口只能测试红pos的请求接口。");
-        toolInf.setBounds(10,0,300,25);
+        JLabel toolInf = new JLabel("选择测试app：");
+        toolInf.setBounds(10,0,200,25);
+        // 需要选择的条目
+        String[] listData = new String[]{"红pos代理", "大pos代理","红pos商户","大pos商户"};
+
+        // 创建一个下拉列表框
+        final JComboBox<String> comboBox = new JComboBox<String>(listData);
+        comboBox.setBounds(140,0,150,25);
+        // 添加条目选中状态改变的监听器
+        comboBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                // 只处理选中的状态
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    System.out.println("选中: " + comboBox.getSelectedIndex() + " = " + comboBox.getSelectedItem());
+                }
+            }
+        });
+        // 设置默认选中的条目
+        comboBox.setSelectedIndex(0);
+
+        // 添加到内容面板
+        panel.add(comboBox);
         panel.add(toolInf);
 
         //登录标题
@@ -154,7 +177,7 @@ public class SwingLoginExample {
         //创建登录按钮
         JButton loginButton = new JButton("登录");
         loginButton.setBounds(10, 230, 80, 25);
-        LoginButoAct loginButoAct = new LoginButoAct(userText,passwordText,loginResultText,tokenText,MD5Text,signText);
+        LoginButoAct loginButoAct = new LoginButoAct(userText,passwordText,loginResultText,tokenText,MD5Text,signText,comboBox);
         loginButton.addActionListener(loginButoAct);
         panel.add(loginButton);
 
@@ -166,7 +189,7 @@ public class SwingLoginExample {
         panel.add(testButton);
 
         //lee
-        JLabel editor = new JLabel("version 1.10");
+        JLabel editor = new JLabel("version 1.32");
         editor.setBounds(610,740,100,25);
         JLabel editor1 = new JLabel("by shaoxiong.li_c");
         editor1.setBounds(580,760,100,25);
